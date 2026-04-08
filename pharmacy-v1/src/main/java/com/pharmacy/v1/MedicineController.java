@@ -9,11 +9,10 @@ import java.util.List;
 @RequestMapping("/medicines")
 public class MedicineController {
 
-    // In-memory storage (simple for project/demo)
     private List<String> medicines = new ArrayList<>();
 
-    // ✅ Add medicine
-    @PostMapping("/add")
+    // ✅ Add medicine (GET for browser testing)
+    @GetMapping("/add")
     public String addMedicine(@RequestParam String name) {
         medicines.add(name);
         return "Medicine added: " + name;
