@@ -15,9 +15,9 @@ spec:
       containers:
       - name: pharmacy-v1
         image: pharmacy:v1
-        imagePullPolicy: Never   # 🔥 IMPORTANT (use local image)
+        imagePullPolicy: Never
         ports:
-        - containerPort: 8081
+        - containerPort: 8080   # ✅ Spring Boot default
 
 ---
 apiVersion: v1
@@ -29,6 +29,6 @@ spec:
   selector:
     app: pharmacy-v1
   ports:
-    - port: 8081
-      targetPort: 8081
-      nodePort: 30001
+    - port: 8080        # service port
+      targetPort: 8080  # container port
+      nodePort: 30001   # external access
